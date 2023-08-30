@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actions-runner
+  namespace: github-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: actions-runner
+  template:
+    metadata:
+      labels:
+        app: actions-runner
+    spec:
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+      - name: workdir
+        hostPath:
+          path: /tmp/github-runner-your-repo
+      containers:
+      - name: runner
+        image: myoung34/github-runner:latest
+        env:
+        - name: ACCESS_TOKEN
+          value: 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
+        # - name: RUNNER_SCOPE
+        #   value: "org"
+        # - name: ORG_NAME
+        #   value: coscq
+        - name: LABELS
+          value: docker-local,glab-actions-runner
+        - name: RUNNER_TOKEN
+          value: BCGIEPWCT6JQM3THDHSUI2DE55P44
+        - name: REPO_URL
+          value: https://github.com/coscq/glab-actions
+        - name: RUNNER_NAME_PREFIX
+          value: docker-local-runner
+        - name: RUNNER_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: RUNNER_WORKDIR
+          value: /tmp/github-runner-your-repo
+        - name: RUNNER_GROUP
+          value: default
+        volumeMounts:
+        - name: dockersock
+          mountPath: /var/run/docker.sock
+        - name: workdir
+          mountPath: /tmp/github-runner-your-repo
