@@ -1,9 +1,13 @@
-resource "helm_release" "quay_release" {
-  name       = "quay-registry"
-
+resource "helm_release" "docker_registry_release" {
+  name       = "docker-registry"
+  namespace  = "docker-registry"
   repository = "https://helm.twun.io"
   chart      = "docker-registry"
 
+  set {
+    name  = "ingress.enabled"
+    value = "true"
+  }
   set {
     name  = "ingress.enabled"
     value = "true"
