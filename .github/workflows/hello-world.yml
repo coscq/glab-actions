@@ -12,6 +12,6 @@ jobs:
       - name: clone repo locally
         run: git clone https://github.com/coscq/glab-actions
       - name: terraform init
-        run: sleep 600 && cd terraform && terraform init
+        run: cd glab-actions/terraform && terraform init
       - name: terraform plan
         run: terraform plan
