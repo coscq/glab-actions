@@ -14,4 +14,6 @@ jobs:
       - name: terraform init
         run: cd glab-actions/terraform && terraform init
       - name: terraform plan
-        run: terraform plan
+        run: cd glab-actions/terraform && terraform plan
+      - name: terraform apply
+        run: cd glab-actions/terraform && terraform apply --auto-approve
