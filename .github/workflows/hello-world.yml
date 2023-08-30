@@ -12,7 +12,7 @@ jobs:
       # - name: clone repo locally
       #   run: git clone https://github.com/coscq/glab-actions
       - name: git pull
-        run: git pull
+        run: cd glab-actions && git pull
       - name: clear terraform cache
         run: cd glab-actions/terraform && rm -rf terraform* .terraform* terraform.tfstate
       - name: terraform init
