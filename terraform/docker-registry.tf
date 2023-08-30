@@ -3,6 +3,7 @@ resource "helm_release" "docker_registry_release" {
   namespace  = "docker-registry"
   repository = "https://helm.twun.io"
   chart      = "docker-registry"
+  create_namespace = true
 
   set {
     name  = "ingress.enabled"
