@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: actions-runner
+  name: docker-actions-runner
   namespace: github-runner
 spec:
   replicas: 1
@@ -25,7 +25,7 @@ spec:
         image: myoung34/github-runner:latest
         env:
         - name: ACCESS_TOKEN
-          value: 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
+          value: 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
         # - name: RUNNER_SCOPE
         #   value: "org"
         # - name: ORG_NAME
@@ -33,11 +33,11 @@ spec:
         - name: LABELS
           value: docker-local,glab-actions-runner
         - name: RUNNER_TOKEN
-          value: BCGIEPWCT6JQM3THDHSUI2DE55P44
+          value: BCGIEPSAFDSOWGEPBKHWPI3E56N4U
         - name: REPO_URL
           value: https://github.com/coscq/glab-actions
         - name: RUNNER_NAME_PREFIX
-          value: docker-local-runner
+          value: docker-github-local-runner
         - name: RUNNER_NAME
           valueFrom:
             fieldRef:

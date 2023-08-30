@@ -4,5 +4,8 @@ jobs:
   my-job:
     runs-on: docker-local
     steps:
-      - name: getting local kube
-        run: curl http://gitea-1692128060.gitea.svc.cluster.local
+      - name: install terraform
+        run: ./.github/scripts/terraform-install.sh
+        shell: bash
+      - name: terraform version
+        run: terraform version
