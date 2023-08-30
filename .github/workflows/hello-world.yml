@@ -5,7 +5,7 @@ jobs:
     runs-on: docker-local
     steps:
       - name: install terraform
-        run: ls -la /
+        run: ls -la ../
         shell: bash
       - name: terraform version
         run: terraform version
