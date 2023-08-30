@@ -9,6 +9,8 @@ jobs:
       #       apt update && apt install -y wget unzip
       #       cd /tmp && wget https://releases.hashicorp.com/terraform/1.5.6/terraform_1.5.6_linux_amd64.zip
       #       unzip terraform_1.5.6_linux_amd64.zip && cp terraform /usr/bin
+      - name: clone repo locally
+        run: git clone https://github.com/coscq/glab-actions
       - name: terraform init
         run: sleep 600 && cd terraform && terraform init
       - name: terraform plan
