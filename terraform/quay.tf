@@ -9,10 +9,6 @@ resource "helm_release" "quay_release" {
     value = "true"
   }
   set {
-    name  = "ingress.hosts"
-    value = "[\"docker-registry.localhost\"]"
-  }
-  set {
     name  = "ingress.className"
     value = "traefik"
   }
