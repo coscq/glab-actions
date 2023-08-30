@@ -11,6 +11,8 @@ jobs:
       #       unzip terraform_1.5.6_linux_amd64.zip && cp terraform /usr/bin
       # - name: clone repo locally
       #   run: git clone https://github.com/coscq/glab-actions
+      - name: clear terraform cache
+        run: cd glab-actions/terraform && rm -rf terraform* .terraform* terraform.tfstate
       - name: terraform init
         run: cd glab-actions/terraform && terraform init
       - name: terraform plan
