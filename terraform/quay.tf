@@ -10,7 +10,7 @@ resource "helm_release" "quay_release" {
   }
   set {
     name  = "ingress.hosts"
-    value = "docker-registry.localhost"
+    value = ["docker-registry.localhost"]
   }
   set {
     name  = "ingress.className"
